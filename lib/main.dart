@@ -10,7 +10,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      title: 'Budget Buddy',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 25, 36, 100)),
+        useMaterial3: true,
+      ),
       home: MyHomePage(),
     );
   }
@@ -63,29 +68,40 @@ String balance = " ";
     return Scaffold(
       appBar: AppBar(
         title: Text("Budget Buddy"),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/wallet.png', height: 90, width: 90),
+            Image.asset('assets/images/wallet.png', height: 85, width: 85),
 
             SizedBox(height: 20),
-            TextField(
-              controller: expenses,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: "Expenses",
-                border: OutlineInputBorder(),
+            SizedBox(
+              width: 290,
+              child: TextField(
+                controller: expenses,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "Expenses",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 20),
-            TextField(
-              controller: dailyLimit,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: "Daily Limit",
-                border: OutlineInputBorder(),
+            SizedBox(
+              width: 290,
+              child: TextField(
+                controller: dailyLimit,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: "Daily Limit",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
               ),
             ),
             const SizedBox(height: 20),
