@@ -100,6 +100,7 @@ String imagePath = "";
                 ),
               ),
             ),
+
             const SizedBox(height: 20),
             SizedBox(
               width: 290,
@@ -115,6 +116,7 @@ String imagePath = "";
               ),
             ),
             const SizedBox(height: 20),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -131,6 +133,7 @@ String imagePath = "";
                 ),
               ],
             ),
+
             const SizedBox(height: 20),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -142,8 +145,7 @@ String imagePath = "";
             ),
 
             const SizedBox(height: 20),
-            if (imagePath.isNotEmpty)
-              Image.asset(imagePath, height: 150, width: 150),
+            Image.asset(imagePath, height: 150, width: 150),
           ],
         ),
       ), 
