@@ -32,6 +32,7 @@ TextEditingController dailyLimit = TextEditingController();
 
 String result = " ";
 String balance = " ";
+String imagePath = "";
  final player = AudioPlayer();
 
 
@@ -54,10 +55,16 @@ String balance = " ";
 
       if (expense < limit) {
         result = "Within budget";
+        imagePath = 'assets/images/ok.png';
+        player.play(AssetSource('audio/ok.mp3'));
       } else if (expense == limit) {
         result = "Limit reached ⚠️";
+        imagePath = 'assets/images/warning.png';
+        player.play(AssetSource('audio/ohno.mp3'));
       } else {
         result = "Over budget 🚨";
+        imagePath = 'assets/images/limit.png';
+        player.play(AssetSource('audio/mwahahaha.mp3'));
       }
     });
   }
@@ -68,6 +75,8 @@ String balance = " ";
     return Scaffold(
       appBar: AppBar(
         title: Text("Budget Buddy"),
+        backgroundColor: Color.fromARGB(255, 25, 36, 100),
+        foregroundColor: Colors.white,
         centerTitle: true,
       ),
       body: Center(
@@ -75,7 +84,7 @@ String balance = " ";
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/images/wallet.png', height: 85, width: 85),
-
+            
             SizedBox(height: 20),
             SizedBox(
               width: 290,
@@ -105,12 +114,24 @@ String balance = " ";
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: checkExpense, 
-              child: const Text("Check"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: checkExpense,
+                  child: const Text("Check"),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    resetFields();
+                  },
+                  child: Text("Clear"),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(result, style: TextStyle(fontSize: 18)),
@@ -118,12 +139,10 @@ String balance = " ";
                 Text(balance, style: TextStyle(fontSize: 18)),
               ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                resetFields();
-              },
-              child: Text("Reset"),
-            ),
+
+            const SizedBox(height: 20),
+            if (imagePath.isNotEmpty)
+              Image.asset(imagePath, height: 150, width: 150),
           ],
         ),
       ), 
