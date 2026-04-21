@@ -42,6 +42,7 @@ String imagePath = "";
     dailyLimit.clear();
     result = "";
     balance = "";
+    imagePath = "";
   });
 }
 
