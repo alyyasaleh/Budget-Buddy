@@ -122,7 +122,7 @@ String imagePath = "";
               children: [
                 ElevatedButton(
                   onPressed: checkExpense,
-                  child: const Text("Check"),
+                  child: Text("Check"),
                 ),
                 SizedBox(width: 20),
                 ElevatedButton(
