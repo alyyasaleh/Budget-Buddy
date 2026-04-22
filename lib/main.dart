@@ -145,6 +145,7 @@ String imagePath = "";
             ),
 
             const SizedBox(height: 20),
+            if (imagePath.isNotEmpty)
             Image.asset(imagePath, height: 150, width: 150),
           ],
         ),
